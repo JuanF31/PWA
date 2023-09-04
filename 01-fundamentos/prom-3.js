@@ -1,6 +1,11 @@
+function retornaTrue(){
+    return true;
+}
+
 function sumarLento(numero){
     return new Promise(function(resolve, reject){
         setTimeout(function(){
+            // reject('Sumar lento fallo');
             resolve(numero + 1);
         }, 800);
     });
@@ -8,8 +13,15 @@ function sumarLento(numero){
 
 let sumarRapido = numero => {
     return new Promise((resolve, reject) => {
-        setTimeout(function(){
-            resolve(numero + 1);
-        }, 800);
+        setTimeout(() =>resolve(numero + 1), 300);
     }); 
 }
+
+// sumarLento(5).then(console.log);
+// sumarRapido(10).then(console.log);
+
+let cosas = [sumarLento(5), sumarRapido(10), true, 'Hola Mundo', retornaTrue()];
+
+Promise.all( cosas )
+    .then(respuestas => console.log(respuestas))
+    .catch(console.log)
