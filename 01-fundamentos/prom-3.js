@@ -22,6 +22,8 @@ let sumarRapido = numero => {
 
 let cosas = [sumarLento(5), sumarRapido(10), true, 'Hola Mundo', retornaTrue()];
 
+//Responden las dos promesas en el oreden que se esta pasando el arreglo
+// Si una de las promesas que se pasa como argumento en el arreglo falla toda la promesa
 Promise.all( cosas )
     .then(respuestas => console.log(respuestas))
     .catch(console.log)
