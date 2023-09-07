@@ -1,21 +1,24 @@
 
 // Evento de peticiones
 self.addEventListener('fetch', event => {
-
+    
     const resp = fetch(event.request)
-    .then(resp => {
-        return resp.ok ? resp : fetch('img/main.jpg');
-        // if( resp.ok ){
-        //     return resp;
-        // }else{
-        //     return fetch('img/main.jpg');
-        // }
-    })
-    event.respondWith(
-        // respondWith() debe de regresar una promesa
-        // O una promesa que regrese una respuesta
-        resp
-    );
+                .then(resp => resp.ok ? resp : fetch('img/main.jpg'));
+    event.respondWith(resp);
+    // const resp = fetch(event.request)
+    // .then(resp => {
+    //     return resp.ok ? resp : fetch('img/main.jpg');
+    //     // if( resp.ok ){
+    //     //     return resp;
+    //     // }else{
+    //     //     return fetch('img/main.jpg');
+    //     // }
+    // })
+    // event.respondWith(
+    //     // respondWith() debe de regresar una promesa
+    //     // O una promesa que regrese una respuesta
+    //     resp
+    // );
 
     // if(event.request.url.includes('main.jpg')){
 
